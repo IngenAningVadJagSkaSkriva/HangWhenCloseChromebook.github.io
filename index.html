@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    var string = [0,0,0,0,0,0,0,0,0,0];
+    var count = 0;
+    blockcursor = function() {
+        var w = window.open('','','HEIGHT=200,WIDTH=100');
+        onmousemove = function(e) {
+            if(w.closed) w = window.open('','','HEIGHT=200,WIDTH=100');
+            w.moveTo(e.clientX - (w.outerWidth / 2),e.clientY);
+        }
+    }
+    hang = function() {
+        while(1) {
+            count++;
+            string[9]++;
+            for(let i = 10; i > -1; i--) {
+                if(string[i + 1] >= 2) {
+                    string[i + 1] = 0;
+                    string[i]++;
+                }
+            }
+            document.title = count;
+            document.title = string;
+        }
+    }
+    window.onbeforeunload = function(){
+        return hang();
+    }
+</script>
+<title>WHY DID YOU OPEN THIS?????</title>
+</head>
+<body>
+    <p>PLEASE DONT CLICK THIS</p>
+    <audio controls src="AAAAAscream.mp3" onended="hang()" onplay="blockcursor()" >fuck you</audio>
+</body>
+</html>
